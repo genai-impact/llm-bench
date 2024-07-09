@@ -1,0 +1,9 @@
+scrape_configs:
+
+- job_name: bench
+  scrape_interval: '1s'
+  static_configs:
+  - targets:
+    - 'pushgateway:9091'
+    - 'node-exporter:9100'
+    - 'gpu-exporter:9835'

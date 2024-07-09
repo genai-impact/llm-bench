@@ -1,0 +1,45 @@
+services:
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./grafana/config/datasources:/etc/grafana/provisioning/datasources:ro"
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus/config:/opt/"
+    restart: unless-stopped
+
+  pushgateway:
+    container_name: pushgateway
+    image: prom/pushgateway:latest
+    ports:
+      - "9091:9091"
+    restart: unless-stopped
+
+  node-exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:latest
+    ports:
+      "9100:9100"
+    restart: unless-stopped
+
+  gpu-exporter:
+    container_name: gpu-exporter
+    image: utkuozdemir/nvidia_gpu_exporter:latest
+    ports:
+      - "9835:9835"
+    devices:
+      - "/dev/nvidiactl:/dev/nvidiactl"
+      - "/dev/nvidia0:/dev/nvidia0"
+    volumes:
+      - "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so"
+      - "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1"
+      - "/usr/bin/nvidia-smi:/usr/bin/nvidia-smi"
+    restart: unless-stopped
