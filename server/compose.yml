@@ -30,6 +30,18 @@ services:
       - "9100:9100"
     restart: unless-stopped
 
+  scaphandre:
+    container_name: scaphandre
+    privileged: true
+    image: hubblo/scaphandre:latest
+    ports:
+      - "9180:8080"
+    volumes:
+      - "/sys/class/powercap:/sys/class/powercap"
+      - "/proc:/proc"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: [ "prometheus", "-p", "8080" ]
+
   gpu-exporter:
     container_name: gpu-exporter
     image: utkuozdemir/nvidia_gpu_exporter:1.2.1

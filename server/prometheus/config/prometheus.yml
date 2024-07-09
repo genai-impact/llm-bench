@@ -7,3 +7,4 @@ scrape_configs:
     - 'pushgateway:9091'
     - 'node-exporter:9100'
     - 'gpu-exporter:9835'
+    - 'scaphandre:9180'
