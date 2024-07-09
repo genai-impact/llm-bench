@@ -13,7 +13,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - "./prometheus/config:/opt/"
+      - "./prometheus/config:/opt/prometheus/conf:ro"
     restart: unless-stopped
 
   pushgateway:
