@@ -32,7 +32,7 @@ services:
 
   gpu-exporter:
     container_name: gpu-exporter
-    image: utkuozdemir/nvidia_gpu_exporter:latest
+    image: utkuozdemir/nvidia_gpu_exporter:1.2.1
     ports:
       - "9835:9835"
     devices:
