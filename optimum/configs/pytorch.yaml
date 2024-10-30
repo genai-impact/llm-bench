@@ -1,0 +1,36 @@
+defaults:
+  - benchmark
+  - scenario: inference
+  - launcher: process
+  - backend: pytorch
+  - _base_
+  - _self_
+
+name: pytorch
+
+launcher:
+  device_isolation: true
+  device_isolation_action: warn
+
+backend:
+  model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+  device: cuda
+  device_ids: 0
+  torch_dtype: float16
+  no_weights: true
+
+scenario:
+  energy: true
+  memory: true
+  latency: true
+
+  warmup_runs: 10
+  iterations: 10
+  duration: 10
+
+  input_shapes:
+    batch_size: 1
+    sequence_length: 256
+  generate_kwargs:
+    max_new_tokens: 256
+    min_new_tokens: 256

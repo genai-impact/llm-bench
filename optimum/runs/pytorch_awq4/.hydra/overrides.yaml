@@ -1,0 +1,3 @@
+- name=pytorch_awq4
+- backend.quantization_scheme=awq
+- +backend.quantization_config.bits=4
