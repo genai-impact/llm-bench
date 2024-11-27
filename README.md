@@ -38,3 +38,44 @@ Commande avec override:
 ```shell
 optimum-benchmark --config-dir examples/ --config-name pytorch backend.model=gpt2 backend.device=cuda
 ```
+
+
+## S3 Bucket
+
+Configure profile:
+
+`~/.aws/config`
+
+```
+[profile gia-scw]
+region = fr-par
+output = json
+services = scw-fr-par
+s3 =
+  max_concurrent_requests = 100
+  max_queue_size = 1000
+  multipart_threshold = 50 MB
+  # Edit the multipart_chunksize value according to the file sizes that you
+  # want to upload. The present configuration allows to upload files up to
+  # 10 GB (1000 requests * 10 MB). For example, setting it to 5 GB allows you
+  # to upload files up to 5 TB.
+  multipart_chunksize = 10 MB
+
+[services scw-fr-par]
+s3 =
+  endpoint_url = https://s3.fr-par.scw.cloud
+```
+
+`~/.aws/credentials`
+
+```
+[gia-scw]
+aws_access_key_id = <access_key_id>
+aws_secret_access_key = <secret_access_key>
+```
+
+Synchronize directory:
+
+```shell
+aws --profile gia-scw s3 sync <path_to_runs_dir> s3://gia-llmbench-s3/runs/
+```
