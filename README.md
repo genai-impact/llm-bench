@@ -13,7 +13,7 @@ Follow [instructions](./tgi/README.md)
 Todo: 
 
 - [ ] Récupérer & filtrer la liste des modèles à tester ([drive](https://docs.google.com/spreadsheets/d/155WvuIdCkWMifurQ3qEi5jzKP87wx9smkA7mObwe3rg/edit?usp=sharing)) [Louise]
-- [ ] Créer le S3 [Sam]
+- [x] Créer le S3 [Sam]
 - [ ] Script bench unitaire pour un modèle [Mohamed + Louise en backup]
     1. paramètre le nom du modèle (credentials du S3)
     2. lance la commande optimum (override)
