@@ -39,7 +39,7 @@ else
 fi
 
 # Run the bench
-CONFIG_DIR="$CURRENT_SCRIPT_DIR/../configs/"
+CONFIG_DIR="$CURRENT_SCRIPT_DIR/configs/"
 optimum-benchmark --config-dir "$CONFIG_DIR" --config-name pytorch backend.model="$model" name="$model_name"
 
 # Synchronize runs directory
