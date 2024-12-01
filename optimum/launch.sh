@@ -28,9 +28,6 @@ fi
 CURRENT_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$CURRENT_SCRIPT_DIR"
 
-# Activate virtualenv
-source .venv/bin/activate
-
 # Extract the content after the last "/" in the model name
 if [[ "$model" == *"/"* ]]; then
     model_name="${model##*/}"
