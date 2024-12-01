@@ -16,7 +16,7 @@ backend:
   model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
   device: cuda
   device_ids: 0
-  torch_dtype: auto
+  torch_dtype: float16
   no_weights: true
   quantization_scheme: awq
   quantization_config:
